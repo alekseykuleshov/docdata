@@ -264,35 +264,41 @@ class ApiClient
      *
      * @param string                   $orderKey
      * @param Type\PaymentRequestInput $payment
+     * @param Type\PaymentRequest      $recurringPaymentRequest 
      *
      * @return Type\StartSuccess
      *
      * @throws \Exception
      */
-    public function start($orderKey, Type\PaymentRequestInput $payment)
+    public function start($orderKey, Type\PaymentRequestInput $payment = null, Type\PaymentRequest $recurringPaymentRequest = null)
     {
         $request = new Type\StartRequest();
         $request->setPaymentOrderKey($orderKey);
         $request->setMerchant($this->merchant);
-        $request->setPayment($payment);
-
+        if($payment !== null){
+          $request->setPayment($payment);
+        }
+        if($recurringPaymentRequest !== null){
+          $request->setRecurringPaymentRequest($recurringPaymentRequest);
+        }
+    
         // make the call
         $this->logger->info("Payment start: " . $orderKey, $request->toArray());
         $response = $this->soap('start', [$request->toArray()]);
         $this->logger->info("Payment start soap request: " . $orderKey, (array) $this->soapClient->__getLastRequest());
         $this->logger->info("Payment start soap response: " . $orderKey, (array) $this->soapClient->__getLastResponse());
-
+    
         // validate response
         if (isset($response->startError)) {
             if ($this->test) {
                 var_dump($this->soapClient->__getLastRequest());
             }
-
+    
             $this->logger->error("Payment start: " . $orderKey, (array) $response->startError->getError()->getExplanation());
-
+    
             throw new \Exception($response->startError->getError()->getExplanation());
         }
-
+    
         return $response->startSuccess;
     }
 
