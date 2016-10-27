@@ -10,7 +10,7 @@ namespace CL\DocData\Component\OrderApi\Type;
 class PaymentResponse extends AbstractObject
 {
     /**
-     * @var mixed
+     * @var PaymentSuccess
      */
     protected $paymentSuccess;
 
@@ -23,4 +23,20 @@ class PaymentResponse extends AbstractObject
      * @var mixed
      */
     protected $paymentError;
+
+    /**
+     * @return PaymentSuccess
+     */
+    public function getPaymentSuccess()
+    {
+        return $this->paymentSuccess;
+    }
+
+    /**
+     * @param PaymentSuccess $paymentSuccess
+     */
+    public function setPaymentSuccess(PaymentSuccess $paymentSuccess)
+    {
+        $this->paymentSuccess = $paymentSuccess;
+    }
 }

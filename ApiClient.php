@@ -80,6 +80,7 @@ class ApiClient
         'paymentReference'        => '\CL\DocData\Component\OrderApi\Type\PaymentReference',
         'paymentRequestInput'     => '\CL\DocData\Component\OrderApi\Type\PaymentRequestInput',
         'paymentResponse'         => '\CL\DocData\Component\OrderApi\Type\PaymentResponse',
+        'paymentSuccess'          => '\CL\DocData\Component\OrderApi\Type\PaymentSuccess',
         'quantity'                => '\CL\DocData\Component\OrderApi\Type\Quantity',
         'refund'                  => '\CL\DocData\Component\OrderApi\Type\Refund',
         'refundError'             => '\CL\DocData\Component\OrderApi\Type\RefundError',
