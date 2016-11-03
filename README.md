@@ -1,24 +1,13 @@
 # DocData Order API Component [![License](https://poser.pugx.org/cleentfaar/docdata-orderapi/license.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
 
-**WARNING: UNDER CONSTRUCTION**
+**WARNING: By no means feature complete or thoroughly tested**
 
 The Order API component for the DocData library.
-
-[![Build Status](https://secure.travis-ci.org/cleentfaar/docdata-orderapi.svg)](http://travis-ci.org/cleentfaar/docdata-orderapi)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cleentfaar/docdata-orderapi/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/docdata-orderapi/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/cleentfaar/docdata-orderapi/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cleentfaar/docdata-orderapi/?branch=master)<br/>
-[![Latest Stable Version](https://poser.pugx.org/cleentfaar/docdata-orderapi/v/stable.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
-[![Total Downloads](https://poser.pugx.org/cleentfaar/docdata-orderapi/downloads.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
-[![Latest Unstable Version](https://poser.pugx.org/cleentfaar/docdata-orderapi/v/unstable.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
-
-**NOTE:** Using Symfony? Check out the bundle that was made to implement this library [here](https://github.com/cleentfaar/CLDocDataOrderApiBundle)!
-
 
 ## Documentation
 
 - [Installation](Resources/doc/installation.md)
 - [Usage examples](Resources/doc/usage.md)
-
 
 ## About
 
@@ -26,13 +15,16 @@ This component lets you create orders and track their status through DocData's O
 
 The current supported API version is `1.2`.
 
+## History
+
+* November 2016 - this project was forked due to issues to repo not being managed
+* August 2014 - new fork https://github.com/cleentfaar/docdata-orderapi created
+* February 2013 - Initial work by Tijs Verkoyen https://github.com/tijsverkoyen/Docdata-Payments
 
 ## License
 
 This package is dual-licensed; mostly MIT (my own code) and some BSD (the original library, see the complete license [here](LICENSE)).
 
-
 ## Thanks
 
-The code in this component is mostly a rough copy of the [Docdata-Payments](https://github.com/tijsverkoyen/Docdata-Payments)
-package by [Tijs Verkoyen](https://github.com/tijsverkoyen). Thanks for your work Tijs!
+This project is a fork of https://github.com/cleentfaar/docdata-orderapi, which is a fork of https://github.com/tijsverkoyen/Docdata-Payments. Thus thanks to both @cleentfaar and @tijsverkoyen.
