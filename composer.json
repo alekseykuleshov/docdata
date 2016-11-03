@@ -1,15 +1,15 @@
 {
-  "name": "cleentfaar/docdata-orderapi",
+  "name": "roelvanduijnhoven/docdata",
   "type": "library",
-  "description": "The Order API component for the DocData library. Adaption of the 'Docdata Payments'-wrappers by Tijs Verkoyen.",
+  "description": "PHP wrapper around DocData's API. Forked out of repo by @cleentfaar",
   "license": [
     "MIT",
     "BSD"
   ],
   "authors": [
     {
-      "name": "Cas Leentfaar",
-      "email": "info@casleentfaar.com"
+      "name": "Roel van Duijnhoven",
+      "email": "roel@jouwweb.nl"
     }
   ],
   "require": {
