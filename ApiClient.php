@@ -477,7 +477,7 @@ class ApiClient
         $this->logger->info("Payment capture: " . $merchantRefundReference, (array) $request->toArray());
         $response = $this->soap('refund', [$request->toArray()]);
         $this->logger->info("Payment capture soap request: " . $merchantRefundReference, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, (array) $this->soapClient->__getLastRequest());
+        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, (array) $this->soapClient->__getLastResponse());
 
         // validate response
         if (isset($response->refundError)) {
@@ -519,7 +519,7 @@ class ApiClient
         /** @var StatusResponse $response */
         $response = $this->soap('status', [$request->toArray()]);
         $this->logger->info("Payment status soap request: " . $paymentOrderKey, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment status soap response: " . $paymentOrderKey, (array) $this->soapClient->__getLastRequest());
+        $this->logger->info("Payment status soap response: " . $paymentOrderKey, (array) $this->soapClient->__getLastResponse());
 
         // validate response
         if ($response->getStatusError()) {
