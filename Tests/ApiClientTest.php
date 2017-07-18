@@ -71,7 +71,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
             $paymentPreferences
         );
 
-        $this->assertInstanceOf('Type\CreateSuccess', $response);
+        $this->assertInstanceOf('CL\DocData\Component\OrderApi\Type\CreateSuccess', $response);
     }
 
     /**
@@ -196,7 +196,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->apiClient->status($var->getKey());
 
-        $this->assertInstanceOf('Type\StatusSuccess', $response);
+        $this->assertInstanceOf('CL\DocData\Component\OrderApi\Type\StatusSuccess', $response);
         $this->assertEquals('SUCCESS', $response->getSuccess()->getCode());
     }
 
