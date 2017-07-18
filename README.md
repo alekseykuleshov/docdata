@@ -17,6 +17,7 @@ The current supported API version is `1.2`.
 
 ## History
 
+* June 2017 - Improved logging. And removed automated test runner using Travis.
 * November 2016 - this project was forked due to issues to repo not being managed
 * August 2014 - new fork https://github.com/cleentfaar/docdata-orderapi created
 * February 2013 - Initial work by Tijs Verkoyen https://github.com/tijsverkoyen/Docdata-Payments

@@ -1,0 +1,3 @@
+<?php
+define('MERCHANT_NAME', '???');
+define('MERCHANT_PASSWORD', '???');
