@@ -241,10 +241,10 @@ class ApiClient
         }
 
         // make the call
-        $this->logger->info("Payment create: " . $paymentId, $request->toArray());
+        $this->logger->info("Payment create: " . $paymentId, ['request' => $request->toArray()]);
         $response = $this->soap('create', [$request->toArray()]);
-        $this->logger->info("Payment create soap request: " . $paymentId, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment create soap response: " . $paymentId, (array) $this->soapClient->__getLastResponse());
+        $this->logger->info("Payment create soap request: " . $paymentId, ['request' => (array) $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment create soap response: " . $paymentId, ['response' => (array) $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->createError)) {
@@ -252,7 +252,10 @@ class ApiClient
                 var_dump($this->soapClient->__getLastRequest());
             }
 
-            $this->logger->error("Payment create: " . $paymentId, (array) $response->createError->getError()->getExplanation());
+            $this->logger->error(
+                "Payment create: " . $paymentId,
+                ['error' => (array) $response->createError->getError()->getExplanation()]
+            );
 
             throw new \Exception($response->createError->getError()->getExplanation());
         }
@@ -284,7 +287,7 @@ class ApiClient
         }
     
         // make the call
-        $this->logger->info("Payment start: " . $orderKey, $request->toArray());
+        $this->logger->info("Payment start: " . $orderKey, ['request' => $request->toArray()]);
         $response = $this->soap('start', [$request->toArray()]);
         $this->logger->info("Payment start soap request: " . $orderKey, (array) $this->soapClient->__getLastRequest());
         $this->logger->info("Payment start soap response: " . $orderKey, (array) $this->soapClient->__getLastResponse());
@@ -324,8 +327,8 @@ class ApiClient
 
         $this->logger->info("Payment cancel: " . $paymentOrderKey, $request->toArray());
         $response = $this->soap('cancel', [$request->toArray()]);
-        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey, (array) $this->soapClient->__getLastResponse());
+        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey, ['request' => (array) $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey, ['response' => (array) $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->cancelError)) {
@@ -333,7 +336,10 @@ class ApiClient
                 var_dump($this->soapClient->__getLastRequest());
             }
 
-            $this->logger->error("Payment cancel: " . $paymentOrderKey, (array) $response->cancelError->getError()->getExplanation());
+            $this->logger->error(
+                "Payment cancel: " . $paymentOrderKey,
+                ['error' => (array) $response->cancelError->getError()->getExplanation()]
+            );
 
             throw new \Exception($response->cancelError->getError()->getExplanation());
         }
@@ -401,10 +407,10 @@ class ApiClient
 
         // make the call
 
-        $this->logger->info("Payment capture: " . $merchantCaptureReference, (array) $request->toArray());
+        $this->logger->info("Payment capture: " . $merchantCaptureReference, ['request' => $request->toArray()]);
         $response = $this->soap('capture', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference, (array) $this->soapClient->__getLastResponse());
+        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference, ['request' => (array) $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference, ['response' => (array) $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->captureError)) {
@@ -412,7 +418,10 @@ class ApiClient
                 var_dump($this->soapClient->__getLastRequest());
             }
 
-            $this->logger->error("Payment capture: " . $merchantCaptureReference, (array) $response->captureError->getError()->getExplanation());
+            $this->logger->error(
+                "Payment capture: " . $merchantCaptureReference,
+                ['error' => (array) $response->captureError->getError()->getExplanation()]
+            );
 
             throw new \Exception($response->captureError->getError()->getExplanation());
         }
@@ -474,10 +483,10 @@ class ApiClient
         }
 
         // make the call
-        $this->logger->info("Payment capture: " . $merchantRefundReference, (array) $request->toArray());
+        $this->logger->info("Payment capture: " . $merchantRefundReference, ['request' => $request->toArray()]);
         $response = $this->soap('refund', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantRefundReference, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, (array) $this->soapClient->__getLastResponse());
+        $this->logger->info("Payment capture soap request: " . $merchantRefundReference, ['request' => (array) $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, ['response' => (array) $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->refundError)) {
@@ -486,7 +495,10 @@ class ApiClient
                 var_dump($response->refundError);
             }
 
-            $this->logger->error("Payment capture: " . $merchantRefundReference, (array) $response->refundError->getError()->getExplanation());
+            $this->logger->error(
+                "Payment capture: " . $merchantRefundReference,
+                ['error' => (array) $response->refundError->getError()->getExplanation()]
+            );
 
             throw new \Exception(
                 $response->refundError->getError()->getExplanation()
@@ -514,12 +526,12 @@ class ApiClient
         $request->setPaymentOrderKey($paymentOrderKey);
 
         // make the call
-        $this->logger->info("Payment status: " . $paymentOrderKey, $request->toArray());
+        $this->logger->info("Payment status: " . $paymentOrderKey, ['request' => $request->toArray()]);
 
         /** @var StatusResponse $response */
         $response = $this->soap('status', [$request->toArray()]);
-        $this->logger->info("Payment status soap request: " . $paymentOrderKey, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment status soap response: " . $paymentOrderKey, (array) $this->soapClient->__getLastResponse());
+        $this->logger->info("Payment status soap request: " . $paymentOrderKey, ['request' => (array) $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment status soap response: " . $paymentOrderKey, ['response' => (array) $this->soapClient->__getLastResponse()]);
 
         // validate response
         if ($response->getStatusError()) {
@@ -528,7 +540,10 @@ class ApiClient
                 var_dump($response->getStatusError());
             }
 
-            $this->logger->error("Payment status: " . $paymentOrderKey, (array) $response->getStatusError()->getError()->getExplanation());
+            $this->logger->error(
+                "Payment status: " . $paymentOrderKey,
+                ['error' => (array) $response->getStatusError()->getError()->getExplanation()]
+            );
 
             throw new \Exception($response->getStatusError()->getError()->getExplanation());
         }
