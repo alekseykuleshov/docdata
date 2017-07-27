@@ -241,10 +241,10 @@ class ApiClient
         }
 
         // make the call
-        $this->logger->info("Payment create: " . $paymentId, ['request' => $request->toArray()]);
+        $this->logger->info("Payment create: " . $paymentId, ['requestObject' => $request->toArray()]);
         $response = $this->soap('create', [$request->toArray()]);
-        $this->logger->info("Payment create soap request: " . $paymentId, ['request' => (array) $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment create soap response: " . $paymentId, ['response' => (array) $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment create soap request: " . $paymentId, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment create soap response: " . $paymentId, ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->createError)) {
@@ -254,7 +254,7 @@ class ApiClient
 
             $this->logger->error(
                 "Payment create: " . $paymentId,
-                ['error' => (array) $response->createError->getError()->getExplanation()]
+                ['error' => $response->createError->getError()->getExplanation()]
             );
 
             throw new \Exception($response->createError->getError()->getExplanation());
@@ -268,7 +268,7 @@ class ApiClient
      *
      * @param string                   $orderKey
      * @param Type\PaymentRequestInput $payment
-     * @param Type\PaymentRequest      $recurringPaymentRequest 
+     * @param Type\PaymentRequest      $recurringPaymentRequest
      *
      * @return Type\StartSuccess
      *
@@ -280,29 +280,29 @@ class ApiClient
         $request->setPaymentOrderKey($orderKey);
         $request->setMerchant($this->merchant);
         if($payment !== null){
-          $request->setPayment($payment);
+            $request->setPayment($payment);
         }
         if($recurringPaymentRequest !== null){
-          $request->setRecurringPaymentRequest($recurringPaymentRequest);
+            $request->setRecurringPaymentRequest($recurringPaymentRequest);
         }
-    
+
         // make the call
-        $this->logger->info("Payment start: " . $orderKey, ['request' => $request->toArray()]);
+        $this->logger->info("Payment start: " . $orderKey, ['requestObject' => $request->toArray()]);
         $response = $this->soap('start', [$request->toArray()]);
-        $this->logger->info("Payment start soap request: " . $orderKey, (array) $this->soapClient->__getLastRequest());
-        $this->logger->info("Payment start soap response: " . $orderKey, (array) $this->soapClient->__getLastResponse());
-    
+        $this->logger->info("Payment start soap request: " . $orderKey, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment start soap response: " . $orderKey, ['response' => $this->soapClient->__getLastResponse()]);
+
         // validate response
         if (isset($response->startError)) {
             if ($this->test) {
                 var_dump($this->soapClient->__getLastRequest());
             }
-    
-            $this->logger->error("Payment start: " . $orderKey, (array) $response->startError->getError()->getExplanation());
-    
+
+            $this->logger->error("Payment start: " . $orderKey, $response->startError->getError()->getExplanation());
+
             throw new \Exception($response->startError->getError()->getExplanation());
         }
-    
+
         return $response->startSuccess;
     }
 
@@ -325,10 +325,10 @@ class ApiClient
 
         // make the call
 
-        $this->logger->info("Payment cancel: " . $paymentOrderKey, $request->toArray());
+        $this->logger->info("Payment cancel: " . $paymentOrderKey, ['requestObject' => $request->toArray()]);
         $response = $this->soap('cancel', [$request->toArray()]);
-        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey, ['request' => (array) $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey, ['response' => (array) $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey, ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->cancelError)) {
@@ -338,7 +338,7 @@ class ApiClient
 
             $this->logger->error(
                 "Payment cancel: " . $paymentOrderKey,
-                ['error' => (array) $response->cancelError->getError()->getExplanation()]
+                ['error' => $response->cancelError->getError()->getExplanation()]
             );
 
             throw new \Exception($response->cancelError->getError()->getExplanation());
@@ -409,8 +409,8 @@ class ApiClient
 
         $this->logger->info("Payment capture: " . $merchantCaptureReference, ['request' => $request->toArray()]);
         $response = $this->soap('capture', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference, ['request' => (array) $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference, ['response' => (array) $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference, ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->captureError)) {
@@ -420,7 +420,7 @@ class ApiClient
 
             $this->logger->error(
                 "Payment capture: " . $merchantCaptureReference,
-                ['error' => (array) $response->captureError->getError()->getExplanation()]
+                ['error' => $response->captureError->getError()->getExplanation()]
             );
 
             throw new \Exception($response->captureError->getError()->getExplanation());
@@ -485,8 +485,8 @@ class ApiClient
         // make the call
         $this->logger->info("Payment capture: " . $merchantRefundReference, ['request' => $request->toArray()]);
         $response = $this->soap('refund', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantRefundReference, ['request' => (array) $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, ['response' => (array) $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment capture soap request: " . $merchantRefundReference, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->refundError)) {
@@ -497,7 +497,7 @@ class ApiClient
 
             $this->logger->error(
                 "Payment capture: " . $merchantRefundReference,
-                ['error' => (array) $response->refundError->getError()->getExplanation()]
+                ['error' => $response->refundError->getError()->getExplanation()]
             );
 
             throw new \Exception(
@@ -526,12 +526,12 @@ class ApiClient
         $request->setPaymentOrderKey($paymentOrderKey);
 
         // make the call
-        $this->logger->info("Payment status: " . $paymentOrderKey, ['request' => $request->toArray()]);
+        $this->logger->info("Payment status: " . $paymentOrderKey, ['requestObject' => $request->toArray()]);
 
         /** @var StatusResponse $response */
         $response = $this->soap('status', [$request->toArray()]);
-        $this->logger->info("Payment status soap request: " . $paymentOrderKey, ['request' => (array) $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment status soap response: " . $paymentOrderKey, ['response' => (array) $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment status soap request: " . $paymentOrderKey, ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment status soap response: " . $paymentOrderKey, ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if ($response->getStatusError()) {
@@ -542,7 +542,7 @@ class ApiClient
 
             $this->logger->error(
                 "Payment status: " . $paymentOrderKey,
-                ['error' => (array) $response->getStatusError()->getError()->getExplanation()]
+                ['error' => $response->getStatusError()->getError()->getExplanation()]
             );
 
             throw new \Exception($response->getStatusError()->getError()->getExplanation());
