@@ -335,7 +335,7 @@ class ApiClient
             if ($this->test) {
                 var_dump($this->soapClient->__getLastRequest());
             }
-|
+
             $this->logger->error(
                 "Payment cancel: " . $paymentOrderKey,
                 ['error' => $response->cancelError->getError()->getExplanation()]
