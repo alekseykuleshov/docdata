@@ -298,7 +298,10 @@ class ApiClient
                 var_dump($this->soapClient->__getLastRequest());
             }
 
-            $this->logger->error("Payment start: " . $orderKey, $response->startError->getError()->getExplanation());
+            $this->logger->error(
+                "Payment start: " . $orderKey,
+                ['error' => $response->startError->getError()->getExplanation()]
+            );
 
             throw new \Exception($response->startError->getError()->getExplanation());
         }
