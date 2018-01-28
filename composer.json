@@ -2,10 +2,7 @@
   "name": "roelvanduijnhoven/docdata",
   "type": "library",
   "description": "PHP wrapper around DocData's API. Forked out of repo by @cleentfaar",
-  "license": [
-    "MIT",
-    "BSD"
-  ],
+  "license": "BSD-3-Clause",
   "authors": [
     {
       "name": "Roel van Duijnhoven",
