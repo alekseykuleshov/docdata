@@ -33,7 +33,7 @@ Add the following two namespace entries to the `registerNamespaces` call in your
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
-    'CL\DocData\Component\OrderApi' => __DIR__.'/../vendor/cleentfaar/docdata-orderapi',
+    'JouwWeb\DocData' => __DIR__.'/../vendor/cleentfaar/docdata-orderapi',
     // ...
 ));
 ```

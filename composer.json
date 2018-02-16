@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CL\\DocData\\Component\\OrderApi\\": ""
+            "JouwWeb\\DocData\\": ""
         }
     }
 }

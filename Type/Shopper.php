@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
 /**
  * @author          Cas Leentfaar <info@casleentfaar.com>

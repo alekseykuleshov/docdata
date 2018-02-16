@@ -1,8 +1,8 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
-use CL\DocData\Component\OrderApi\ApiClient;
+use JouwWeb\DocData\ApiClient;
 
 /**
  * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>

@@ -1,5 +1,5 @@
 <?php
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
 /**
  * DocDataPayments SuccessError class

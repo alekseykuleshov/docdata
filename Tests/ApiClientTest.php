@@ -1,9 +1,9 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Tests;
+namespace JouwWeb\DocData\Tests;
 
-use CL\DocData\Component\OrderApi\ApiClient;
-use CL\DocData\Component\OrderApi\Type;
+use JouwWeb\DocData\ApiClient;
+use JouwWeb\DocData\Type;
 
 class ApiClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -71,7 +71,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
             $paymentPreferences
         );
 
-        $this->assertInstanceOf('CL\DocData\Component\OrderApi\Type\CreateSuccess', $response);
+        $this->assertInstanceOf('JouwWeb\DocData\Type\CreateSuccess', $response);
     }
 
     /**
@@ -121,7 +121,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->apiClient->cancel($var->getKey());
 
-        $this->assertInstanceOf('\CL\DocData\Component\OrderApi\Type\CancelSuccess', $response);
+        $this->assertInstanceOf('\JouwWeb\DocData\Type\CancelSuccess', $response);
         $this->assertEquals('SUCCESS', $response->getSuccess()->getCode());
     }
 
@@ -133,7 +133,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
         $this->markTestSkipped('we can\'t test this without using a fixed payment id, so alter the id below');
         $response = $this->apiClient->capture(4905992874);
 
-        $this->assertInstanceOf('\CL\DocData\Component\OrderApi\Type\CaptureSuccess', $response);
+        $this->assertInstanceOf('\JouwWeb\DocData\Type\CaptureSuccess', $response);
         $this->assertEquals('SUCCESS', $response->getSuccess()->getCode());
     }
 
@@ -145,7 +145,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
         $this->markTestSkipped('we can\'t test this without using a fixed payment id, so alter the id below');
         $response = $this->apiClient->refund(4905992874);
 
-        $this->assertInstanceOf('\CL\DocData\Component\OrderApi\Type\RefundSuccess', $response);
+        $this->assertInstanceOf('\JouwWeb\DocData\Type\RefundSuccess', $response);
         $this->assertEquals('SUCCESS', $response->getSuccess()->getCode());
     }
 
@@ -196,7 +196,7 @@ class ApiClientTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->apiClient->status($var->getKey());
 
-        $this->assertInstanceOf('CL\DocData\Component\OrderApi\Type\StatusSuccess', $response);
+        $this->assertInstanceOf('JouwWeb\DocData\Type\StatusSuccess', $response);
         $this->assertEquals('SUCCESS', $response->getSuccess()->getCode());
     }
 

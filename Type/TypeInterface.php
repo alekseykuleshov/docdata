@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
 interface TypeInterface
 {

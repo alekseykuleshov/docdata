@@ -1,11 +1,11 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi;
+namespace JouwWeb\DocData;
 
-use CL\DocData\Component\OrderApi\Type\ApproximateTotals;
-use CL\DocData\Component\OrderApi\Type\PaymentPreferences;
-use CL\DocData\Component\OrderApi\Type\StatusResponse;
-use CL\DocData\Component\OrderApi\Type\StatusSuccess;
+use JouwWeb\DocData\Type\ApproximateTotals;
+use JouwWeb\DocData\Type\PaymentPreferences;
+use JouwWeb\DocData\Type\StatusResponse;
+use JouwWeb\DocData\Type\StatusSuccess;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -46,56 +46,56 @@ class ApiClient
      * @var array
      */
     private $classMaps = [
-        'address'                 => '\CL\DocData\Component\OrderApi\Type\Address',
-        'amexPaymentInfo'         => '\CL\DocData\Component\OrderApi\Type\AmexPaymentInfo',
-        'amount'                  => '\CL\DocData\Component\OrderApi\Type\Amount',
-        'approximateTotals'       => '\CL\DocData\Component\OrderApi\Type\ApproximateTotals',
-        'authorization'           => '\CL\DocData\Component\OrderApi\Type\Authorization',
-        'bankTransferPaymentInfo' => '\CL\DocData\Component\OrderApi\Type\BankTransferPaymentInfo',
-        'cancelError'             => '\CL\DocData\Component\OrderApi\Type\CancelError',
-        'cancelSuccess'           => '\CL\DocData\Component\OrderApi\Type\CancelSuccess',
-        'capture'                 => '\CL\DocData\Component\OrderApi\Type\Capture',
-        'captureError'            => '\CL\DocData\Component\OrderApi\Type\CaptureError',
-        'captureSuccess'          => '\CL\DocData\Component\OrderApi\Type\CaptureSuccess',
-        'chargeback'              => '\CL\DocData\Component\OrderApi\Type\Chargeback',
-        'country'                 => '\CL\DocData\Component\OrderApi\Type\Country',
-        'createError'             => '\CL\DocData\Component\OrderApi\Type\CreateError',
-        'createSuccess'           => '\CL\DocData\Component\OrderApi\Type\CreateSuccess',
-        'destination'             => '\CL\DocData\Component\OrderApi\Type\Destination',
-        'error'                   => '\CL\DocData\Component\OrderApi\Type\Error',
-        'giftCardPaymentInfo'     => '\CL\DocData\Component\OrderApi\Type\GiftCardPaymentInfo',
-        'iDealPaymentInfo'        => '\CL\DocData\Component\OrderApi\Type\IdealPaymentInfo',
-        'invoice'                 => '\CL\DocData\Component\OrderApi\Type\Invoice',
-        'item'                    => '\CL\DocData\Component\OrderApi\Type\Item',
-        'language'                => '\CL\DocData\Component\OrderApi\Type\Language',
-        'maestroPaymentInfo'      => '\CL\DocData\Component\OrderApi\Type\MaestroPaymentInfo',
-        'masterCardPaymentInfo'   => '\CL\DocData\Component\OrderApi\Type\MasterCardPaymentInfo',
-        'menuPreferences'         => '\CL\DocData\Component\OrderApi\Type\MenuPreferences',
-        'merchant'                => '\CL\DocData\Component\OrderApi\Type\Merchant',
-        'misterCashPaymentInfo'   => '\CL\DocData\Component\OrderApi\Type\MisterCashPaymentInfo',
-        'name'                    => '\CL\DocData\Component\OrderApi\Type\name',
-        'payment'                 => '\CL\DocData\Component\OrderApi\Type\Payment',
-        'paymentInfo'             => '\CL\DocData\Component\OrderApi\Type\PaymentInfo',
-        'paymentPreferences'      => '\CL\DocData\Component\OrderApi\Type\PaymentPreferences',
-        'paymentReference'        => '\CL\DocData\Component\OrderApi\Type\PaymentReference',
-        'paymentRequestInput'     => '\CL\DocData\Component\OrderApi\Type\PaymentRequestInput',
-        'paymentResponse'         => '\CL\DocData\Component\OrderApi\Type\PaymentResponse',
-        'paymentSuccess'          => '\CL\DocData\Component\OrderApi\Type\PaymentSuccess',
-        'quantity'                => '\CL\DocData\Component\OrderApi\Type\Quantity',
-        'refund'                  => '\CL\DocData\Component\OrderApi\Type\Refund',
-        'refundError'             => '\CL\DocData\Component\OrderApi\Type\RefundError',
-        'refundSuccess'           => '\CL\DocData\Component\OrderApi\Type\RefundSuccess',
-        'riskCheck'               => '\CL\DocData\Component\OrderApi\Type\RiskCheck',
-        'shopper'                 => '\CL\DocData\Component\OrderApi\Type\Shopper',
-        'startError'              => '\CL\DocData\Component\OrderApi\Type\StartError',
-        'startSuccess'            => '\CL\DocData\Component\OrderApi\Type\StartSuccess',
-        'statusError'             => '\CL\DocData\Component\OrderApi\Type\StatusError',
-        'statusReport'            => '\CL\DocData\Component\OrderApi\Type\StatusReport',
-        'statusResponse'          => '\CL\DocData\Component\OrderApi\Type\StatusResponse',
-        'statusSuccess'           => '\CL\DocData\Component\OrderApi\Type\StatusSuccess',
-        'success'                 => '\CL\DocData\Component\OrderApi\Type\Success',
-        'vat'                     => '\CL\DocData\Component\OrderApi\Type\Vat',
-        'visaPaymentInfo'         => '\CL\DocData\Component\OrderApi\Type\VisaPaymentInfo',
+        'address'                 => '\JouwWeb\DocData\Type\Address',
+        'amexPaymentInfo'         => '\JouwWeb\DocData\Type\AmexPaymentInfo',
+        'amount'                  => '\JouwWeb\DocData\Type\Amount',
+        'approximateTotals'       => '\JouwWeb\DocData\Type\ApproximateTotals',
+        'authorization'           => '\JouwWeb\DocData\Type\Authorization',
+        'bankTransferPaymentInfo' => '\JouwWeb\DocData\Type\BankTransferPaymentInfo',
+        'cancelError'             => '\JouwWeb\DocData\Type\CancelError',
+        'cancelSuccess'           => '\JouwWeb\DocData\Type\CancelSuccess',
+        'capture'                 => '\JouwWeb\DocData\Type\Capture',
+        'captureError'            => '\JouwWeb\DocData\Type\CaptureError',
+        'captureSuccess'          => '\JouwWeb\DocData\Type\CaptureSuccess',
+        'chargeback'              => '\JouwWeb\DocData\Type\Chargeback',
+        'country'                 => '\JouwWeb\DocData\Type\Country',
+        'createError'             => '\JouwWeb\DocData\Type\CreateError',
+        'createSuccess'           => '\JouwWeb\DocData\Type\CreateSuccess',
+        'destination'             => '\JouwWeb\DocData\Type\Destination',
+        'error'                   => '\JouwWeb\DocData\Type\Error',
+        'giftCardPaymentInfo'     => '\JouwWeb\DocData\Type\GiftCardPaymentInfo',
+        'iDealPaymentInfo'        => '\JouwWeb\DocData\Type\IdealPaymentInfo',
+        'invoice'                 => '\JouwWeb\DocData\Type\Invoice',
+        'item'                    => '\JouwWeb\DocData\Type\Item',
+        'language'                => '\JouwWeb\DocData\Type\Language',
+        'maestroPaymentInfo'      => '\JouwWeb\DocData\Type\MaestroPaymentInfo',
+        'masterCardPaymentInfo'   => '\JouwWeb\DocData\Type\MasterCardPaymentInfo',
+        'menuPreferences'         => '\JouwWeb\DocData\Type\MenuPreferences',
+        'merchant'                => '\JouwWeb\DocData\Type\Merchant',
+        'misterCashPaymentInfo'   => '\JouwWeb\DocData\Type\MisterCashPaymentInfo',
+        'name'                    => '\JouwWeb\DocData\Type\name',
+        'payment'                 => '\JouwWeb\DocData\Type\Payment',
+        'paymentInfo'             => '\JouwWeb\DocData\Type\PaymentInfo',
+        'paymentPreferences'      => '\JouwWeb\DocData\Type\PaymentPreferences',
+        'paymentReference'        => '\JouwWeb\DocData\Type\PaymentReference',
+        'paymentRequestInput'     => '\JouwWeb\DocData\Type\PaymentRequestInput',
+        'paymentResponse'         => '\JouwWeb\DocData\Type\PaymentResponse',
+        'paymentSuccess'          => '\JouwWeb\DocData\Type\PaymentSuccess',
+        'quantity'                => '\JouwWeb\DocData\Type\Quantity',
+        'refund'                  => '\JouwWeb\DocData\Type\Refund',
+        'refundError'             => '\JouwWeb\DocData\Type\RefundError',
+        'refundSuccess'           => '\JouwWeb\DocData\Type\RefundSuccess',
+        'riskCheck'               => '\JouwWeb\DocData\Type\RiskCheck',
+        'shopper'                 => '\JouwWeb\DocData\Type\Shopper',
+        'startError'              => '\JouwWeb\DocData\Type\StartError',
+        'startSuccess'            => '\JouwWeb\DocData\Type\StartSuccess',
+        'statusError'             => '\JouwWeb\DocData\Type\StatusError',
+        'statusReport'            => '\JouwWeb\DocData\Type\StatusReport',
+        'statusResponse'          => '\JouwWeb\DocData\Type\StatusResponse',
+        'statusSuccess'           => '\JouwWeb\DocData\Type\StatusSuccess',
+        'success'                 => '\JouwWeb\DocData\Type\Success',
+        'vat'                     => '\JouwWeb\DocData\Type\Vat',
+        'visaPaymentInfo'         => '\JouwWeb\DocData\Type\VisaPaymentInfo',
     ];
 
     /**

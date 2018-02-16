@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
 /**
  * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
@@ -65,7 +65,7 @@ class RefundRequest extends AbstractRequest
      * which no information is available yet. Will be ignored if provided here,
      * but not needed e.g. for iDEAL or credit card refunds.
      *
-     * @var  \CL\DocData\Component\OrderApi\Type\SepaBankAccount
+     * @var  \JouwWeb\DocData\Type\SepaBankAccount
      */
     protected $refundBankAccount;
 

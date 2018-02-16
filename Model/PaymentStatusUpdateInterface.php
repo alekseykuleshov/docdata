@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Model;
+namespace JouwWeb\DocData\Model;
 
 interface PaymentStatusUpdateInterface
 {

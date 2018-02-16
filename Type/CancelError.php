@@ -1,6 +1,6 @@
 <?php
 
-namespace CL\DocData\Component\OrderApi\Type;
+namespace JouwWeb\DocData\Type;
 
 /**
  * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
