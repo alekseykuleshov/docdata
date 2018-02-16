@@ -9,10 +9,6 @@ use JouwWeb\DocData\Type\StatusSuccess;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-/**
- * @author          Cas Leentfaar <info@casleentfaar.com>
- * @original_author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
- */
 class ApiClient
 {
     const VERSION = '1.2';

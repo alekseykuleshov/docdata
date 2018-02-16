@@ -1,7 +1,6 @@
 {
     "name": "roelvanduijnhoven/docdata",
     "description": "PHP wrapper around DocData's API.",
-    "version": "1.2.1",
     "type": "library",
     "keywords": [
         "docdata",
@@ -32,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "JouwWeb\\DocData\\": ""
+            "JouwWeb\\DocData\\": "src/"
         }
     }
 }
