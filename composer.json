@@ -1,7 +1,7 @@
 {
     "name": "roelvanduijnhoven/docdata",
     "description": "PHP wrapper around DocData's API.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "type": "library",
     "keywords": [
         "docdata",
@@ -28,7 +28,8 @@
         "phpunit/phpunit": "~4.1"
     },
     "replace": {
-        "roelvanduijnhoven/docdata": "~1.2"
+        "roelvanduijnhoven/docdata": "~1.2",
+        "cleentfaar/docdata-orderapi": "~1.0"
     },
     "autoload": {
         "psr-4": {
