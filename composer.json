@@ -1,25 +1,38 @@
 {
-  "name": "roelvanduijnhoven/docdata",
-  "type": "library",
-  "description": "PHP wrapper around DocData's API. Forked out of repo by @cleentfaar",
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Roel van Duijnhoven",
-      "email": "roel@jouwweb.nl"
+    "name": "roelvanduijnhoven/docdata",
+    "description": "PHP wrapper around DocData's API.",
+    "version": "1.2.0",
+    "type": "library",
+    "keywords": [
+        "docdata",
+        "payments"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Roel van Duijnhoven",
+            "email": "roel@jouwweb.nl",
+            "role": "Developer"
+        },
+        {
+            "name": "Willem Mouwen",
+            "email": "willem@jouwweb.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.1"
+    },
+    "replace": {
+        "roelvanduijnhoven/docdata": "~1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "CL\\DocData\\Component\\OrderApi\\": ""
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4.0",
-    "psr/log": "~1.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.1"
-  },
-  "target-dir": "CL/DocData/Component/OrderApi",
-  "autoload": {
-    "psr-0": {
-      "CL\\DocData\\Component\\OrderApi": ""
-    }
-  }
 }
