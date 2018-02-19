@@ -26,7 +26,7 @@ abstract class AbstractRequest extends AbstractObject
     /**
      * @var string
      */
-    protected $version = DocData::VERSION;
+    protected $version = DocData::API_VERSION;
 
     /**
      * @param Merchant $merchant

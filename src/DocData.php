@@ -11,7 +11,15 @@ use Psr\Log\NullLogger;
 
 class DocData
 {
-    const API_VERSION = '1.3';
+    /**
+     * API version of the DocData Order API this package is built for
+     */
+    const API_VERSION = '1.2';
+
+    /**
+     * @var array List of available banks (issuers) for the iDeal payment method
+     */
+    const IDEAL_ISSUERS = __DIR__ . '../config/ideal-issuers.php';
 
     /**
      * @var Type\Merchant
@@ -111,8 +119,8 @@ class DocData
         $this->merchant->setName($merchantName);
         $this->merchant->setPassword($merchantPassword);
 
-        $this->test   = $test;
-        $this->logger = $logger ? : new NullLogger();
+        $this->test = $test;
+        $this->logger = $logger ?: new NullLogger();
     }
 
     /**
@@ -132,7 +140,7 @@ class DocData
      */
     public function setTimeOut($seconds)
     {
-        $this->timeOut = (int) $seconds;
+        $this->timeOut = (int)$seconds;
     }
 
     /**
@@ -152,7 +160,7 @@ class DocData
      */
     public function setUserAgent($userAgent)
     {
-        $this->userAgent = (string) $userAgent;
+        $this->userAgent = (string)$userAgent;
     }
 
     /**
@@ -160,11 +168,11 @@ class DocData
      */
     private function getWsdl()
     {
-        if ($this->test === true) {
-            return sprintf('https://test.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::API_VERSION));
-        } else {
-            return sprintf('https://secure.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::API_VERSION));
-        }
+        return sprintf(
+            'https://%s.docdatapayments.com/ps/services/paymentservice/%s?wsdl',
+            ($this->test === true ? 'test' : 'secure'),
+            str_replace('.', '_', self::API_VERSION)
+        );
     }
 
     /**
@@ -239,8 +247,10 @@ class DocData
         // make the call
         $this->logger->info("Payment create: " . $paymentId, ['requestObject' => $request->toArray()]);
         $response = $this->soap('create', [$request->toArray()]);
-        $this->logger->info("Payment create soap request: " . $paymentId, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment create soap response: " . $paymentId, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment create soap request: " . $paymentId,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment create soap response: " . $paymentId,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->createError)) {
@@ -270,23 +280,28 @@ class DocData
      *
      * @throws \Exception
      */
-    public function start($orderKey, Type\PaymentRequestInput $payment = null, Type\PaymentRequest $recurringPaymentRequest = null)
-    {
+    public function start(
+        $orderKey,
+        Type\PaymentRequestInput $payment = null,
+        Type\PaymentRequest $recurringPaymentRequest = null
+    ) {
         $request = new Type\StartRequest();
         $request->setPaymentOrderKey($orderKey);
         $request->setMerchant($this->merchant);
-        if($payment !== null){
+        if ($payment !== null) {
             $request->setPayment($payment);
         }
-        if($recurringPaymentRequest !== null){
+        if ($recurringPaymentRequest !== null) {
             $request->setRecurringPaymentRequest($recurringPaymentRequest);
         }
 
         // make the call
         $this->logger->info("Payment start: " . $orderKey, ['requestObject' => $request->toArray()]);
         $response = $this->soap('start', [$request->toArray()]);
-        $this->logger->info("Payment start soap request: " . $orderKey, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment start soap response: " . $orderKey, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment start soap request: " . $orderKey,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment start soap response: " . $orderKey,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->startError)) {
@@ -326,8 +341,10 @@ class DocData
 
         $this->logger->info("Payment cancel: " . $paymentOrderKey, ['requestObject' => $request->toArray()]);
         $response = $this->soap('cancel', [$request->toArray()]);
-        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment cancel soap request: " . $paymentOrderKey,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment cancel soap response: " . $paymentOrderKey,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->cancelError)) {
@@ -408,8 +425,10 @@ class DocData
 
         $this->logger->info("Payment capture: " . $merchantCaptureReference, ['request' => $request->toArray()]);
         $response = $this->soap('capture', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment capture soap request: " . $merchantCaptureReference,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantCaptureReference,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->captureError)) {
@@ -484,8 +503,10 @@ class DocData
         // make the call
         $this->logger->info("Payment capture: " . $merchantRefundReference, ['request' => $request->toArray()]);
         $response = $this->soap('refund', [$request->toArray()]);
-        $this->logger->info("Payment capture soap request: " . $merchantRefundReference, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment capture soap response: " . $merchantRefundReference, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment capture soap request: " . $merchantRefundReference,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment capture soap response: " . $merchantRefundReference,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if (isset($response->refundError)) {
@@ -529,8 +550,10 @@ class DocData
 
         /** @var StatusResponse $response */
         $response = $this->soap('status', [$request->toArray()]);
-        $this->logger->info("Payment status soap request: " . $paymentOrderKey, ['request' => $this->soapClient->__getLastRequest()]);
-        $this->logger->info("Payment status soap response: " . $paymentOrderKey, ['response' => $this->soapClient->__getLastResponse()]);
+        $this->logger->info("Payment status soap request: " . $paymentOrderKey,
+            ['request' => $this->soapClient->__getLastRequest()]);
+        $this->logger->info("Payment status soap response: " . $paymentOrderKey,
+            ['response' => $this->soapClient->__getLastResponse()]);
 
         // validate response
         if ($response->getStatusError()) {
@@ -567,6 +590,9 @@ class DocData
      * @param string $defaultAct           If a default payment method is declared to direct the shopper
      *                                     to that payment method in the payment menu. Can contain the
      *                                     values “yes” or “no”.
+     * @param string $issuerId             If a default payment method needs an issuer id, allow it to
+     *                                     be passed. For example, the payment method 'IDEAL' needs an
+     *                                     issuer id corresponding to a connected bank, e.g. 'RABONL2U'
      *
      * @return string
      */
@@ -578,13 +604,14 @@ class DocData
         $pendingUrl = null,
         $errorUrl = null,
         $defaultPaymentMethod = null,
-        $defaultAct = null
+        $defaultAct = null,
+        $issuerId = null
     ) {
-        $parameters                        = [];
-        $parameters['command']             = 'show_payment_cluster';
-        $parameters['merchant_name']       = $this->merchant->getName();
-        $parameters['client_language']     = (string) $clientLanguage;
-        $parameters['payment_cluster_key'] = (string) $paymentClusterKey;
+        $parameters = [];
+        $parameters['command'] = 'show_payment_cluster';
+        $parameters['merchant_name'] = $this->merchant->getName();
+        $parameters['client_language'] = (string)$clientLanguage;
+        $parameters['payment_cluster_key'] = (string)$paymentClusterKey;
 
         if ($successUrl !== null) {
             $parameters['return_url_success'] = $successUrl;
@@ -602,7 +629,10 @@ class DocData
             $parameters['default_pm'] = $defaultPaymentMethod;
         }
         if ($defaultAct !== null) {
-            $parameters['default_act'] = $defaultAct;
+            $parameters['default_act'] = in_array($defaultAct, [true, 1, 'yes', 'YES']) ? 'yes' : 'no';
+        }
+        if ($issuerId !== null) {
+            $parameters['issuer_id'] = $issuerId;
         }
 
         if ($this->test) {
@@ -632,6 +662,9 @@ class DocData
      * @param string $defaultAct           If a default payment method is declared to direct the shopper
      *                                     to that payment method in the payment menu. Can contain the
      *                                     values “yes” or “no”.
+     * @param string $issuerId             If a default payment method needs an issuer id, allow it to
+     *                                     be passed. For example, the payment method 'IDEAL' needs an
+     *                                     issuer id corresponding to a connected bank, e.g. 'RABONL2U'
      */
     public function redirectToPaymentUrl(
         $clientLanguage,
@@ -641,7 +674,8 @@ class DocData
         $pendingUrl = null,
         $errorUrl = null,
         $defaultPaymentMethod = null,
-        $defaultAct = null
+        $defaultAct = null,
+        $issuerId = null
     ) {
         // get the url
         $url = $this->getPaymentUrl(
@@ -652,7 +686,8 @@ class DocData
             $pendingUrl,
             $errorUrl,
             $defaultPaymentMethod,
-            $defaultAct
+            $defaultAct,
+            $issuerId
         );
 
         $this->logger->info("Redirect to docdata: " . $url);
@@ -675,6 +710,7 @@ class DocData
      * @param $paymentOrderKey
      *
      * @return int The highest Paid level (from NotPaid to SafeRoute)
+     * @throws \Exception
      */
     public function statusPaid($paymentOrderKey)
     {
