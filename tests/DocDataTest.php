@@ -5,7 +5,7 @@ namespace JouwWeb\DocData\Tests;
 use JouwWeb\DocData\DocData;
 use JouwWeb\DocData\Type;
 
-class ApiClientTest extends \PHPUnit_Framework_TestCase
+class DocDataTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var DocData
