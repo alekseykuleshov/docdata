@@ -17,11 +17,6 @@ class DocData
     const API_VERSION = '1.2';
 
     /**
-     * @var array List of available banks (issuers) for the iDeal payment method
-     */
-    const IDEAL_ISSUERS = __DIR__ . '../config/ideal-issuers.php';
-
-    /**
      * @var Type\Merchant
      */
     private $merchant;
@@ -756,6 +751,16 @@ class DocData
         }
 
         return Type\PaidLevel::NotPaid;
+    }
+
+    /**
+     * List of available banks (issuers) for the iDeal payment method
+     *
+     * @return array
+     */
+    public function getIdealIssuers()
+    {
+        return require __DIR__ . '/../config/ideal-issuers.php';
     }
 
     /**
