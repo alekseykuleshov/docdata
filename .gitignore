@@ -1,4 +1,4 @@
 composer.lock
 vendor/*
-src/Tests/config.php
+tests/config.php
 .idea/

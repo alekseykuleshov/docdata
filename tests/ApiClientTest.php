@@ -2,19 +2,19 @@
 
 namespace JouwWeb\DocData\Tests;
 
-use JouwWeb\DocData\ApiClient;
+use JouwWeb\DocData\DocData;
 use JouwWeb\DocData\Type;
 
 class ApiClientTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var ApiClient
+     * @var DocData
      */
     private $apiClient;
 
     protected function setUp()
     {
-        $this->apiClient = new ApiClient(MERCHANT_NAME, MERCHANT_PASSWORD, true);
+        $this->apiClient = new DocData(MERCHANT_NAME, MERCHANT_PASSWORD, true);
     }
 
     public function testSettersGetters()

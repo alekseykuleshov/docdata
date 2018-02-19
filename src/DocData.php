@@ -9,9 +9,9 @@ use JouwWeb\DocData\Type\StatusSuccess;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
-class ApiClient
+class DocData
 {
-    const VERSION = '1.3';
+    const API_VERSION = '1.3';
 
     /**
      * @var Type\Merchant
@@ -161,9 +161,9 @@ class ApiClient
     private function getWsdl()
     {
         if ($this->test === true) {
-            return sprintf('https://test.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::VERSION));
+            return sprintf('https://test.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::API_VERSION));
         } else {
-            return sprintf('https://secure.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::VERSION));
+            return sprintf('https://secure.docdatapayments.com/ps/services/paymentservice/%s?wsdl', str_replace('.', '_', self::API_VERSION));
         }
     }
 

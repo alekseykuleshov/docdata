@@ -33,5 +33,10 @@
         "psr-4": {
             "JouwWeb\\DocData\\": "src/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JouwWeb\\DocData\\Tests\\": "tests/"
+        }
+    },
 }

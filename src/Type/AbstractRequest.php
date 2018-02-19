@@ -2,7 +2,7 @@
 
 namespace JouwWeb\DocData\Type;
 
-use JouwWeb\DocData\ApiClient;
+use JouwWeb\DocData\DocData;
 
 /**
  * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
@@ -26,7 +26,7 @@ abstract class AbstractRequest extends AbstractObject
     /**
      * @var string
      */
-    protected $version = ApiClient::VERSION;
+    protected $version = DocData::VERSION;
 
     /**
      * @param Merchant $merchant
