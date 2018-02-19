@@ -11,17 +11,8 @@ Add the following to your ``composer.json`` (see http://getcomposer.org/)
 
     "require" :  {
         // ...
-        "cleentfaar/docdata-orderapi": "1.0.*@dev"
+        "roelvanduijnhoven/docdata": "^1.2.2"
     }
-
-
-### Method b) Using submodules
-
-Run the following commands to bring in the needed libraries as submodules.
-
-```bash
-git submodule add https://github.com/cleentfaar/docdata-orderapi.git vendor/bundles/CL/DocData/Component/OrderApi
-```
 
 ## Step 2) Register the namespaces
 
@@ -33,7 +24,7 @@ Add the following two namespace entries to the `registerNamespaces` call in your
 // app/autoload.php
 $loader->registerNamespaces(array(
     // ...
-    'JouwWeb\DocData' => __DIR__.'/../vendor/cleentfaar/docdata-orderapi',
+    'JouwWeb\DocData' => __DIR__.'/../vendor/roelvanduijnhoven/docdata',
     // ...
 ));
 ```

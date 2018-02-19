@@ -5,6 +5,7 @@ namespace JouwWeb\DocData\Model;
 interface PaymentInterface
 {
     const METHOD_DIRECT_DEBIT = 'SEPA_DIRECT_DEBIT';
+    const METHOD_IDEAL = 'IDEAL';
 
     // states belonging to a 'NEW' context
     const STATUS_NEW                   = 1;
