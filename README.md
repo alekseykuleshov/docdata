@@ -1,4 +1,4 @@
-# DocData Order API Component [![License](https://poser.pugx.org/cleentfaar/docdata-orderapi/license.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
+# DocData Order API Component
 
 **WARNING: By no means feature complete or thoroughly tested**
 
@@ -6,17 +6,18 @@ The Order API component for the DocData library.
 
 ## Documentation
 
-- [Installation](Resources/doc/installation.md)
-- [Usage examples](Resources/doc/usage.md)
+- [Installation](doc/installation.md)
+- [Usage examples](doc/usage.md)
 
 ## About
 
 This component lets you create orders and track their status through DocData's Order API.
 
-The current supported API version is `1.2`.
+The current supported API version is `1.2` with adjustments to make arbitrary backwards-compatible features of version `1.3` available.
 
 ## History
 
+* February 2018 - Repository forked once again due to its abandoned state, added some `1.3` features.
 * June 2017 - Improved logging. And removed automated test runner using Travis.
 * November 2016 - this project was forked due to issues to repo not being managed
 * August 2014 - new fork https://github.com/cleentfaar/docdata-orderapi created
@@ -24,7 +25,7 @@ The current supported API version is `1.2`.
 
 ## License
 
-This package is dual-licensed; mostly MIT (my own code) and some BSD (the original library, see the complete license [here](LICENSE)).
+This package is dual-licensed; mostly MIT and some BSD.
 
 ## Thanks
 
