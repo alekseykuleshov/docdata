@@ -4,9 +4,7 @@ namespace JouwWeb\DocData\Type;
 
 use JouwWeb\DocData\DocData;
 
-/**
- * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
- */
+
 abstract class AbstractRequest extends AbstractObject
 {
     /**

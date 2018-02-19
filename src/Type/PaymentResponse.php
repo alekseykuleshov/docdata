@@ -4,8 +4,6 @@ namespace JouwWeb\DocData\Type;
 
 /**
  * DocDataPayments PaymentResponse class
- *
- * @author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
  */
 class PaymentResponse extends AbstractObject
 {

@@ -2,10 +2,6 @@
 
 namespace JouwWeb\DocData\Type;
 
-/**
- * @author          Cas Leentfaar <info@casleentfaar.com>
- * @original_author Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
- */
 class Shopper extends AbstractObject
 {
     /**

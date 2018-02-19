@@ -3,8 +3,6 @@
 namespace JouwWeb\DocData\Type;
 
 /**
- * @author Theo den Hollander
- *
  * Docdata document: 733126_Integration_manual_Order_Api_1-1.pdf
  * Chapter: 7.4 Determining whether an order is paid
  * Determining whether an order is paid

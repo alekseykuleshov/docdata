@@ -3,8 +3,6 @@ namespace JouwWeb\DocData\Type;
 
 /**
  * DocDataPayments SuccessError class
- *
- * @author        Tijs Verkoyen <php-docdatapayments@verkoyen.eu>
  */
 class AbstractSuccessError extends AbstractObject
 {

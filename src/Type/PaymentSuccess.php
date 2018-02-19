@@ -4,8 +4,6 @@ namespace JouwWeb\DocData\Type;
 
 /**
  * DocDataPayments PaymentSuccess class
- *
- * @author Roel van Duijnhoven <roel@jouwweb.nl>
  */
 class PaymentSuccess extends AbstractObject
 {

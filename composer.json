@@ -11,12 +11,22 @@
         {
             "name": "Roel van Duijnhoven",
             "email": "roel@jouwweb.nl",
-            "role": "Developer"
+            "role": "Developer, Maintainer"
         },
         {
             "name": "Willem Mouwen",
             "email": "willem@jouwweb.nl",
-            "role": "Developer"
+            "role": "Developer, Maintainer"
+        },
+        {
+            "name": "Cas Leentfaar",
+            "email": "info@casleentfaar.com",
+            "role": "Original Developer"
+        },
+        {
+            "name": "Tijs Verkoyen",
+            "email": "php-docdatapayments@verkoyen.eu",
+            "role": "Original developer"
         }
     ],
     "require": {
@@ -38,5 +48,5 @@
         "psr-4": {
             "JouwWeb\\DocData\\Tests\\": "tests/"
         }
-    },
+    }
 }
