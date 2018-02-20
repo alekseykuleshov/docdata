@@ -585,7 +585,7 @@ class DocData
      * @param string $defaultAct           If a default payment method is declared to direct the shopper
      *                                     to that payment method in the payment menu. Can contain the
      *                                     values “yes” or “no”.
-     * @param string $issuerId             If a default payment method needs an issuer id, allow it to
+     * @param string $idealIssuerId        If a default payment method needs an issuer id, allow it to
      *                                     be passed. For example, the payment method 'IDEAL' needs an
      *                                     issuer id corresponding to a connected bank, e.g. 'RABONL2U'
      *
@@ -600,7 +600,7 @@ class DocData
         $errorUrl = null,
         $defaultPaymentMethod = null,
         $defaultAct = null,
-        $issuerId = null
+        $idealIssuerId = null
     ) {
         $parameters = [];
         $parameters['command'] = 'show_payment_cluster';
@@ -621,13 +621,16 @@ class DocData
             $parameters['return_url_error'] = $errorUrl;
         }
         if ($defaultPaymentMethod !== null) {
-            $parameters['default_pm'] = $defaultPaymentMethod;
-        }
-        if ($defaultAct !== null) {
-            $parameters['default_act'] = in_array($defaultAct, [true, 1, 'yes', 'YES']) ? 'yes' : 'no';
-        }
-        if ($issuerId !== null) {
-            $parameters['issuer_id'] = $issuerId;
+            $parameters['default_pm'] = strtoupper($defaultPaymentMethod);
+
+            if (in_array($parameters['default_pm'], ['IDEAL', 'PAYPAL'])
+                && in_array($defaultAct, [true, 1, 'yes', 'YES'])) {
+                $parameters['default_act'] = 'yes';
+            }
+
+            if ($parameters['default_pm'] === 'IDEAL' && $idealIssuerId !== null) {
+                $parameters['ideal_issuer_id'] = $idealIssuerId;
+            }
         }
 
         if ($this->test) {
