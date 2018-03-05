@@ -1,25 +1,52 @@
 {
-  "name": "roelvanduijnhoven/docdata",
-  "type": "library",
-  "description": "PHP wrapper around DocData's API. Forked out of repo by @cleentfaar",
-  "license": "BSD-3-Clause",
-  "authors": [
-    {
-      "name": "Roel van Duijnhoven",
-      "email": "roel@jouwweb.nl"
+    "name": "roelvanduijnhoven/docdata",
+    "description": "PHP wrapper around DocData's API.",
+    "type": "library",
+    "keywords": [
+        "docdata",
+        "payments"
+    ],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Roel van Duijnhoven",
+            "email": "roel@jouwweb.nl",
+            "role": "Developer, Maintainer"
+        },
+        {
+            "name": "Willem Mouwen",
+            "email": "willem@jouwweb.nl",
+            "role": "Developer, Maintainer"
+        },
+        {
+            "name": "Cas Leentfaar",
+            "email": "info@casleentfaar.com",
+            "role": "Original Developer"
+        },
+        {
+            "name": "Tijs Verkoyen",
+            "email": "php-docdatapayments@verkoyen.eu",
+            "role": "Original developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "psr/log": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.1"
+    },
+    "replace": {
+        "cleentfaar/docdata-orderapi": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JouwWeb\\DocData\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JouwWeb\\DocData\\Tests\\": "tests/"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4.0",
-    "psr/log": "~1.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.1"
-  },
-  "target-dir": "CL/DocData/Component/OrderApi",
-  "autoload": {
-    "psr-0": {
-      "CL\\DocData\\Component\\OrderApi": ""
-    }
-  }
 }
