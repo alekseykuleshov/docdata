@@ -17,8 +17,8 @@ The current supported API version is `1.3`.
 
 ## History
 
-* May 2017 - api 1.3 support added
-* May 2017 - new fork https://github.com/alekseykuleshov/docdata created, using release 0.9 of https://github.com/roelvanduijnhoven/docdata
+* May 2018 - api 1.3 support added
+* May 2018 - new fork https://github.com/alekseykuleshov/docdata created, using release 0.9 of https://github.com/roelvanduijnhoven/docdata
 * June 2017 - Improved logging. And removed automated test runner using Travis.
 * November 2016 - https://github.com/roelvanduijnhoven/docdata was forked due to issues to repo not being managed
 * August 2014 - new fork https://github.com/cleentfaar/docdata-orderapi created
