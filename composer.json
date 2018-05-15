@@ -1,5 +1,5 @@
 {
-  "name": "roelvanduijnhoven/docdata",
+  "name": "atdev/docdata",
   "type": "library",
   "description": "PHP wrapper around DocData's API. Forked out of repo by @cleentfaar",
   "license": [
