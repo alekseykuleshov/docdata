@@ -15,7 +15,7 @@ class StatusResponse extends AbstractObject
     /**
      * @var StatusError
      */
-    protected $statusError;
+    protected $statusErrors;
 
     /**
      * @param StatusSuccess $statusSuccess
@@ -36,16 +36,16 @@ class StatusResponse extends AbstractObject
     /**
      * @param StatusError $statusError
      */
-    public function setStatusError(StatusError $statusError)
+    public function setStatusErrors(StatusError $statusError)
     {
-        $this->statusError = $statusError;
+        $this->statusErrors = $statusError;
     }
 
     /**
      * @return StatusError
      */
-    public function getStatusError()
+    public function getStatusErrors()
     {
-        return $this->statusError;
+        return $this->statusErrors;
     }
 }
