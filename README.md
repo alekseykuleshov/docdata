@@ -1,4 +1,4 @@
-# DocData Order API Component [![License](https://poser.pugx.org/cleentfaar/docdata-orderapi/license.svg)](https://packagist.org/packages/cleentfaar/docdata-orderapi)
+# DocData Order API (v1.3) Component
 
 **WARNING: By no means feature complete or thoroughly tested**
 
